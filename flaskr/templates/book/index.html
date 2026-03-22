@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Livres{% endblock %}</h1>
+    <a class="action" href="{{ url_for('book.create') }}">New</a>
+{% endblock %}
+
+{% block content %}
+   <table>
+   <tr class="header">
+		<td>Title</td>
+		<td>Author</td>
+		<td>Categ</td>
+		<td>Course Intitule</td>
+   </tr>
+   {% for book in books %}
+    <tr class="book">
+	     <td>{{ book['title'] }}</td>
+		 <!-- placer un lien for editing ici -->
+		 <td>{{ book['author'] }}</td>
+		 <td>{{ Categ(book['categ']) }}</td>
+		 <td>{{ Categ(book['intitule']) }}</td>
+	</tr>
+   {% endfor %}
+   </table>
+{% endblock %}

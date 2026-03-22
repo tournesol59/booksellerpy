@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+   <h1>{% block title %}Ajout Livre{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Titre</label>
+	<input name="title" id="title" value="{{ request.form['title'] }}" required >
+    <label for="author">Auteur</label>
+	<input name="author" id="author" value="{{ request.form['author'] }}" required >
+    <label for="categ">Categorie</label>
+	<input name="categ" id="categ" value="{{ request.form['categ'] }}" required >
+    <label for="coursename">Title</label>
+	<input name="coursenaf" id="coursenaf" value="{{ request.form['coursenaf'] }}" required>	
+  </form>
+{% endblock %}

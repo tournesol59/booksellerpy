@@ -1,6 +1,5 @@
 import os
 from flask import Flask
-from . import db
 
 def create_app(test_config=None):
    # create and configure the app
@@ -21,11 +20,21 @@ def create_app(test_config=None):
    os.makedirs(app.instance_path, exist_ok=True)
    
    # a simple page that says hello
-   @app.route('/books')
+   @app.route('/hello')
    def hello():
       return 'Books from JRR Tolkien .. the Hobbit'
 	 
+   # import and call this function from the factory. Place the new code at the end of the factory
+   from . import db
    db.init_app(app)
+       
+   #from . import auth
+   #app.register_blueprint(auth.bp)
+
+   from . import bpBook, eBook
+   app.register_blueprint(bpBook.bp)
+   app.add_url_rule('/', endpoint='index')
+   
    return app
 	  
    
